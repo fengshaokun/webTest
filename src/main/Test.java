@@ -1,9 +1,4 @@
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
-import org.dom4j.Document;
-import org.dom4j.DocumentException;
-import org.dom4j.DocumentHelper;
-import org.dom4j.Element;
+
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -12,7 +7,7 @@ import java.util.*;
 
 public class Test {
 
-    public static String httpGet(String urlStr,Map<String,String> params){
+    public static String httpGet(String urlStr){
         URL connect;
         StringBuffer data = new StringBuffer();
         try {
@@ -23,7 +18,7 @@ public class Test {
             connection.setDoInput(true);
             connection.setUseCaches(true);//post不能使用缓存
             connection.setInstanceFollowRedirects(true);
-            connection.setRequestProperty("Authorization", "bearer cn-b3a2e5d1-6a97-490d-848d-4a99a8431415");
+        //  connection.setRequestProperty("Authorization", "bearer cn-b3a2e5d1-6a97-490d-848d-4a99a8431415");
             BufferedReader reader = new BufferedReader(new InputStreamReader(
                     connection.getInputStream(), "UTF-8"));
             String line;
@@ -66,7 +61,7 @@ public class Test {
                     }
                     return data.toString();
                 }
-                public static void main(String[] args) {
+                public static void main(String[] args) throws UnsupportedEncodingException {
                   /*  JSONObject json1=new JSONObject();
 
                     JSONObject json2=new JSONObject();
@@ -75,11 +70,13 @@ public class Test {
 */
                     Map<String, String> map=new HashMap<String, String>();
                     String url="https://api.bimface.com/view/token?fileId=1750383708014144";
-                    System.out.println( httpGet(url,map));
+                    System.out.println( httpGet(url));
+/*
+                    String urlParameters = "http://47.92.162.151/miyun/appManager/queryEnergyCurrentDatas.do?meterIds=1&paramIds=24";
+                    System.out.println(httpGet(urlParameters));*/
+
+
             }
-
-
-
             }
 
 
